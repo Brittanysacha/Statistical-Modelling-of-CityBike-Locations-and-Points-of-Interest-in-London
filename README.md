@@ -15,3 +15,13 @@
 
 ## Future Goals
 (what would you do if you had more time?)
+
+
+
+
+
+#Presentation Guideline - Make ppt. (Or figure out how to add in images and graphs to GitHub)
+
+- Min project flow
+- 2-3 min results
+- 1 min challenges and other goals
