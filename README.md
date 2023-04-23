@@ -29,11 +29,22 @@ The above steps were repeated for three other queries related to points of inter
 
 ### Step 3: Joining CityBikes, Yelp, and FourSquare
 
+##### Data Joining, Primary Cleaning, and Review
 The third phase of this project involved joining the data collected from the City Bikes, Yelp, and Foursquare API requests. As the data from the Foursquare API request was not very comprehensive, I decided not to join the Yelp and Foursquare API requests together, but to have two separate groups of data. The first group consisted of the Yelp and City Bikes information, while the second group consisted of the City Bikes and Foursquare information.
 
 To start, I imported the five CSV files created in the first two phases. These files contained data about London CityBikes, two Yelp datasets (one for parks and one for restaurants), and two Foursquare datasets (one for parks and one for restaurants). To differentiate between the two types of locations, I added a new column called "Type" to each of the Yelp and Foursquare datasets. This column indicated whether the location was a park or a restaurant. I then renamed the "name" column in the CityBikes DataFrame to "location" so that it could be merged with the Foursquare datasets. Similarly, I renamed the "location_name" column in the Foursquare datasets to "location" to make the merging process easier.
 
 The next step was to merge the Yelp and Foursquare datasets based on the "location" column and concatenate them together. After this, I repeated the process with the City Bikes dataset, resulting in two separate merged datasets: one for Yelp and City Bikes and one for Foursquare and City Bikes. Before proceeding, I removed the "id" and "fsq_id" columns from the merged datasets as they did not add any useful information. Finally, I exported the merged datasets to CSV files and loaded them back in as new DataFrames for further analysis.
+
+##### Exploratory Data Analysis
+After collecting the necessary data, I began my exploratory data analysis (EDA). I started with my FourSqaure and CityBikes API Data. However, upon examining the data retireved from the FourSquare API request, it became apparent that the information available about restaurants and parks within a 250m radius of the CityBike locations was insufficient for a thorough analysis.
+
+To address this issue, I had added a "type" column during my initial data review to distinguish between parks and restaurants, with the intention of then running a regression analysis on the number of available bikes versus the number of parks and restaurants. However, further examination of the categories table and how different points of interest were categorized revealed that the API was including various categories that were not a good fit for parks and restaurants. For parks this was the inclusion of beer gardens, car parks (i.e. parking lots), playgrounds, corporate business parks, and outdoor food and drink patios. For restaurants it was pulling in parks, hotels, car parks, office buildings, or anywhere that has a form of food service attached. Thus, typifying each row as a park or restaurant could lead to misleading or inaccurate regression results. 
+
+Regression analysis is a powerful tool for examining relationships between variables, but having all necessary data is crucial for obtaining accurate and informative results. Without access to important information such as ratings, prices, IDs, and categories, attempting to perform regression analysis would be ineffective and potentially misleading. Therefore, the decision was made to exclude the FourSquare data from the study and focus on alternative sources of information.
+
+To address this issue in the future, it might be helpful to manually review the categories assigned by FourSquare's API and cross-reference them with the expected categories. This could ensure that only relevant points of interest are included in the analysis. Additionally, exploring alternative data sources could provide more comprehensive and accurate data for analysis. 
+
 
 ### Step 4:
 
