@@ -69,7 +69,7 @@ The information provided in the summary statistics can help to identify potentia
 Additionally, since almost one-third of the data on price is missing, it may be necessary to exclude this variable from the analysis or impute a 0 value, as we know the park locations where no price data is included are because they are free of charge.
 
 
-![Yelp Rating vs Available Bikes]()
+![Yelp Rating vs Available Bikes](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/yelp_citybikes_scatterplot.png)
 
 
 
