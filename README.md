@@ -36,16 +36,51 @@ To start, I imported the five CSV files created in the first two phases. These f
 
 The next step was to merge the Yelp and Foursquare datasets based on the "location" column and concatenate them together. After this, I repeated the process with the City Bikes dataset, resulting in two separate merged datasets: one for Yelp and City Bikes and one for Foursquare and City Bikes. Before proceeding, I removed the "id" and "fsq_id" columns from the merged datasets as they did not add any useful information. Finally, I exported the merged datasets to CSV files and loaded them back in as new DataFrames for further analysis.
 
-##### Exploratory Data Analysis
+##### Exploratory Data Analysis - FourSquare
 After collecting the necessary data, I began my exploratory data analysis (EDA). I started with my FourSqaure and CityBikes API Data. However, upon examining the data retireved from the FourSquare API request, it became apparent that the information available about restaurants and parks within a 250m radius of the CityBike locations was insufficient for a thorough analysis.
 
 To address this issue, I had added a "type" column during my initial data review to distinguish between parks and restaurants, with the intention of then running a regression analysis on the number of available bikes versus the number of parks and restaurants. However, further examination of the categories table and how different points of interest were categorized revealed that the API was including various categories that were not a good fit for parks and restaurants. For parks this was the inclusion of beer gardens, car parks (i.e. parking lots), playgrounds, corporate business parks, and outdoor food and drink patios. For restaurants it was pulling in parks, hotels, car parks, office buildings, or anywhere that has a form of food service attached. Thus, typifying each row as a park or restaurant could lead to misleading or inaccurate regression results. 
 
-![FourSquare DataFrame Sample](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/CityBike%20Locations_London_Cluster.png)
+![FourSquare DataFrame Sample](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/FourSquare_Df_Sample.png)
 
 Regression analysis is a powerful tool for examining relationships between variables, but having all necessary data is crucial for obtaining accurate and informative results. Without access to important information such as ratings, prices, IDs, and categories, attempting to perform regression analysis would be ineffective and potentially misleading. Therefore, the decision was made to exclude the FourSquare data from the study and focus on alternative sources of information.
 
 To address this issue in the future, it might be helpful to manually review the categories assigned by FourSquare's API and cross-reference them with the expected categories. This could ensure that only relevant points of interest are included in the analysis. Additionally, exploring alternative data sources could provide more comprehensive and accurate data for analysis. 
+
+Exploratory Data Analysis - Yelp
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 3572 entries, 0 to 3571
+Data columns (total 9 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   name        3572 non-null   object 
+ 1   location    3572 non-null   object 
+ 2   categories  3572 non-null   object 
+ 3   rating      3572 non-null   float64
+ 4   price       2300 non-null   object 
+ 5   Type        3572 non-null   object 
+ 6   latitude    3572 non-null   float64
+ 7   longitude   3572 non-null   float64
+ 8   free_bikes  3572 non-null   int64  
+dtypes: float64(3), int64(1), object(5)
+memory usage: 251.3+ KB
+
+
+
++-------+-------------+--------------+--------------+--------------+
+|       |      rating |     latitude |    longitude |   free_bikes |
+|-------+-------------+--------------+--------------+--------------|
+| count | 3572        | 3572         | 3572         |   3572       |
+| mean  |    3.80949  |   51.5074    |   -0.136093  |     14.0342  |
+| std   |    0.984991 |    0.0185617 |    0.0491151 |      9.52804 |
+| min   |    0        |   51.4568    |   -0.229117  |      0       |
+| 25%   |    3.5      |   51.4956    |   -0.174411  |      6       |
+| 50%   |    4        |   51.5081    |   -0.137044  |     12       |
+| 75%   |    4.5      |   51.5216    |   -0.106824  |     20       |
+| max   |    5        |   51.5468    |   -0.00699   |     63       |
++-------+-------------+--------------+--------------+--------------+
+
 
 
 ### Step 4:
