@@ -54,44 +54,11 @@ I first looked at a sample from the Yelp DataFrame to ensure it was formatted co
 
 I then wanted to see what types of data had been collected. Therefore, I ran a describe query for the Yelp DataFrame, which provided a summary of the data types and non-null count for each column in a Pandas DataFrame. The Yelp DataFrame has 9 columns, each with a specific data type. The first three columns, "name," "location," and "categories," are object data types, which typically represent strings. The fourth column, "rating," is a float64 data type, which represents floating-point numbers. The fifth column, "Type," is also an object data type. The sixth and seventh and columns, "latitude" and "longitude," are float64 data types. The eighth column "free_bikes," is an integer data type. Finally, the ninth column, "price," is an object data type and has 2300 non-null values, meaning there are 1272 null values.
 
-
-<class 'pandas.core.frame.DataFrame'>
-RangeIndex: 3572 entries, 0 to 3571
-Data columns (total 9 columns):
- #   Column      Non-Null Count  Dtype  
----  ------      --------------  -----  
- 0   name        3572 non-null   object 
- 1   location    3572 non-null   object 
- 2   categories  3572 non-null   object 
- 3   rating      3572 non-null   float64
- 4   Type        3572 non-null   object 
- 5   latitude    3572 non-null   float64
- 6   longitude   3572 non-null   float64
- 7   free_bikes  3572 non-null   int64  
- 8   price_num   2300 non-null   float64
-dtypes: float64(4), int64(1), object(4)
-memory usage: 251.3+ KB object(5)
-memory usage: 251.3+ KB
-
-
-Summary Statistics
-
-+-------+-------------+--------------+--------------+--------------+
-|       |      rating |     latitude |    longitude |   free_bikes |
-|-------+-------------+--------------+--------------+--------------|
-| count | 3572        | 3572         | 3572         |   3572       |
-| mean  |    3.80949  |   51.5074    |   -0.136093  |     14.0342  |
-| std   |    0.984991 |    0.0185617 |    0.0491151 |      9.52804 |
-| min   |    0        |   51.4568    |   -0.229117  |      0       |
-| 25%   |    3.5      |   51.4956    |   -0.174411  |      6       |
-| 50%   |    4        |   51.5081    |   -0.137044  |     12       |
-| 75%   |    4.5      |   51.5216    |   -0.106824  |     20       |
-| max   |    5        |   51.5468    |   -0.00699   |     63       |
-+-------+-------------+--------------+--------------+--------------+
-
-
+![Yelp Describe Stats EDA](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/Yelp%20Describe%20Stats%20EDA.png)
 
 After running the describe function on the Yelp DataFrame, I was able to generate a summary of the central tendency, dispersion, and shape of the data's distribution, excluding NaN values. This gave me a better understanding of what the data was showing. The Yelp DataFrame contains information on 3572 restaurants and parks in London. The average rating for businesses in the DataFrame is 3.81 out of 5, indicating that overall satisfaction levels are relatively high in the region. While the latitude and longitude values for each entry allow for mapping the locations of the businesses, they are not relevant in terms of summary statistics. The DataFrame also shows that the average number of available bikes is 14, with a maximum of 63 bikes available in a 250m proximity for a single business. Additionally, businesses are priced from 1 to 4, with an average price of 1.98. However, it is important to note that there are only 2300 non-null values, mostly for free parks across the region, so almost a third of the data is NaN or free.
+
+![Yelp Summary Stats EDA](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/Yelp%20Summary%20Stats%20EDA.png)
 
 The information provided in the summary statistics can help to identify potential variables to include in a regression analysis. For example, the average rating for businesses in the DataFrame could be a dependent variable, with independent variables such as the number of available bikes, price, and location (latitude and longitude) being tested for their relationship to the dependent variable. The fact that the latitude and longitude values are not important in terms of summary statistics means they may not be good independent variables for the regression analysis.
 
