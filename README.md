@@ -13,7 +13,7 @@ The first step of this project was to connect to the CityBikes API and retrieve 
 
 The second step of this project involved gathering information about points of interest located within a 100-metre radius of each CityBike location. However, I made the decision to lower my radius of each CityBike points, due to the size of the city I was studying and the close proximity of my bike points. 
 
-![alt text](/Users/brittanyharding/LHL-Projects/Statistical-Modelling-with-Python/data/Images/CityBike Locations_London_Cluster.png)
+![London City Bike Cluster](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/CityBike%20Locations_London_Cluster.png)
 
 Therefore, I began by looking for restaurants within a 250-metre radius of each CityBike location using code that utilised the Foursquare API. Firstly, I set up the API credentials using the `os.environ.get()` function and connected to the Greater London API network. Next, I defined a function called `restaurant_foursquare_query()` that takes latitude and longitude coordinates as input and sends an HTTP GET request to the API endpoint URL with the given query parameters. The function then returns the JSON content from the response.
 
