@@ -39,9 +39,9 @@ The next step was to merge the Yelp and Foursquare datasets based on the "locati
 ##### Exploratory Data Analysis - FourSquare
 After collecting the necessary data, I began my exploratory data analysis (EDA). I started with my FourSqaure and CityBikes API Data. However, upon examining the data retireved from the FourSquare API request, it became apparent that the information available about restaurants and parks within a 250m radius of the CityBike locations was insufficient for a thorough analysis.
 
-![FourSquare Describe Stats]()
+![FourSquare Describe Stats](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/FourSquare%20Describe%20Stats%20EDA.png)
 
-![FourSquare Summary Stats]()
+![FourSquare Summary Stats](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/FourSquare%20Summary%20Stats%20EDA.png)
 
 To address this issue, I had added a "type" column during my initial data review to distinguish between parks and restaurants, with the intention of then running a regression analysis on the number of available bikes versus the number of parks and restaurants. However, further examination of the categories table and how different points of interest were categorized revealed that the API was including various categories that were not a good fit for parks and restaurants. For parks this was the inclusion of beer gardens, car parks (i.e. parking lots), playgrounds, corporate business parks, and outdoor food and drink patios. For restaurants it was pulling in parks, hotels, car parks, office buildings, or anywhere that has a form of food service attached. Thus, typifying each row as a park or restaurant could lead to misleading or inaccurate regression results. 
 
@@ -58,18 +58,18 @@ I first looked at a sample from the Yelp DataFrame to ensure it was formatted co
 
 I then wanted to see what types of data had been collected. Therefore, I ran a describe query for the Yelp DataFrame, which provided a summary of the data types and non-null count for each column in a Pandas DataFrame. The Yelp DataFrame has 9 columns, each with a specific data type. The first three columns, "name," "location," and "categories," are object data types, which typically represent strings. The fourth column, "rating," is a float64 data type, which represents floating-point numbers. The fifth column, "Type," is also an object data type. The sixth and seventh and columns, "latitude" and "longitude," are float64 data types. The eighth column "free_bikes," is an integer data type. Finally, the ninth column, "price," is an object data type and has 2300 non-null values, meaning there are 1272 null values.
 
-![Yelp Describe Stats EDA](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/FourSquare%20Describe%20Stats%20EDA.png)
+![Yelp Describe Stats EDA](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/FourSquare%20Summary%20Stats%20EDA.png)
 
 After running the describe function on the Yelp DataFrame, I was able to generate a summary of the central tendency, dispersion, and shape of the data's distribution, excluding NaN values. This gave me a better understanding of what the data was showing. The Yelp DataFrame contains information on 3572 restaurants and parks in London. The average rating for businesses in the DataFrame is 3.81 out of 5, indicating that overall satisfaction levels are relatively high in the region. While the latitude and longitude values for each entry allow for mapping the locations of the businesses, they are not relevant in terms of summary statistics. The DataFrame also shows that the average number of available bikes is 14, with a maximum of 63 bikes available in a 250m proximity for a single business. Additionally, businesses are priced from 1 to 4, with an average price of 1.98. However, it is important to note that there are only 2300 non-null values, mostly for free parks across the region, so almost a third of the data is NaN or free.
 
-![Yelp Summary Stats EDA](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/FourSquare%20Summary%20Stats%20EDA.png)
+![Yelp Summary Stats EDA](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/Yelp%20Summary%20Stats%20EDA.png)
 
 The information provided in the summary statistics can help to identify potential variables to include in a regression analysis. For example, the average rating for businesses in the DataFrame could be a dependent variable, with independent variables such as the number of available bikes, price, and location (latitude and longitude) being tested for their relationship to the dependent variable. The fact that the latitude and longitude values are not important in terms of summary statistics means they may not be good independent variables for the regression analysis.
 
 Additionally, since almost one-third of the data on price is missing, it may be necessary to exclude this variable from the analysis or impute a 0 value, as we know the park locations where no price data is included are because they are free of charge.
 
 
-
+![Yelp Rating vs Available Bikes]()
 
 
 
