@@ -97,6 +97,9 @@ Nevertheless, the scatter plot still suggests that there is some positive relati
 
 
 ### Step 4: Results
+I started by creating a regression model for the YELP API data on the POIs, restaurants and parks, that were within a 250m radius of 250 CityBike locations in London. This regression model included two independent variables "rating" and "num_price", which referred to how the POI rated by consumers on a scale of 1-5, and how much the restaurant or park cost on a scale of 0-4 (with 0 being no cost). The model used the variable "free_bikes" as the dependent variable, referring to how many bikes were available for use at each CityBike Station.
+
+![Regression Analysis Results](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/Regression%20Stats%20Results%20-%20Model.png)
 
 Based on my analysis of the data, the quality of Yelp's API coverage in London appears to be insufficient for providing accurate and reliable predictions of the number of free bikes available. Although the model shows some potential for predicting the number of free bikes available, the results are not particularly reliable or accurate. The low R-squared value of 0.001 indicates that only a tiny fraction of the variance in the dependent variable can be explained by the independent variables used in the model. Furthermore, the F-statistic of 2.568 and its associated probability suggest that the model as a whole is not statistically significant, which further calls into question its overall quality. However, it is worth noting that the coefficient for the price_num variable is statistically significant, indicating that it has a noticeable impact on the number of free bikes available. In contrast, the coefficient for the rating variable is not statistically significant.
 
@@ -104,6 +107,15 @@ The model also underwent three additional tests: the Durbin-Watson test, the Jar
 
 The low Durbin-Watson statistic suggests that the model's residuals may have correlation, which means that errors may be correlated with each other over time. This violates one of the assumptions of linear regression and may lead to unreliable predictions. The Jarque-Bera test indicates that the residuals are not normally distributed, which means the data is not capturing all of the relevant factors that affect the dependent variable, or that there are other sources of variability that are not accounted for in the model. Lastly, the AIC and BIC values suggest that the model fit is not optimal, which is a further indication that the model should be used with care. Overall, these tests suggest that the model may not be suitable for predicting the number of free bikes available with a high degree of accuracy and that alternative sources of information or more robust models may be needed.
 
+
+
+![Regression POI rating, price, and available free bikes](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/Regression%20POI%20price%20and%20rating%20near%20CB%20location.png)
+
+
+![Regression POI rating and available free bikes](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/Regression%20rating%20near%20CB%20location.png)
+
+
+![Regression POI price and available free bikes](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/Regression%20POI%20prices%20near%20CB%20location.png)
 
 ## Results
 (fill in what you found about the comparative quality of API coverage in your chosen area and the results of your model.)
