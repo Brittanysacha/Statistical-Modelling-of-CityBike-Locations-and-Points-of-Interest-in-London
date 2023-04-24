@@ -1,7 +1,7 @@
 Project-Statistical-Modelling-with-Python
 
 ## Project/Goals
-(fill in your description and goals here)
+The overall goal of this project was to retrieve API data from CityBikes, Yelp, and FourSquare to determine points of interest (POI) locations such as restaurants and parks that are within a 250m radius of each bike point. Once the data was retrieved, efforts were made to clean, organize, and join the data where appropriate. Regression analysis was then conducted to examine the strength of variable relationships between the types of POI locations nearby and CityBike locations. The goal was to determine if there was a correlation between a higher rating or price and the number of bikes available for public use.
 
 ## Process
 This project had several steps aimed at gaining a comprehensive understanding of different points of interest in close proximity to CityBike locations across a certain region. The region selected for this project was the city of London, England. Below are some of the steps involved in the process of completing this project:
@@ -101,31 +101,36 @@ I started by creating a regression model for the YELP API data on the POIs, rest
 
 ![Regression Analysis Results](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/Regression%20Stats%20Results%20-%20Model.png)
 
-Based on my analysis of the data, the quality of Yelp's API coverage in London appears to be insufficient for providing accurate and reliable predictions of the number of free bikes available. Although the model shows some potential for predicting the number of free bikes available, the results are not particularly reliable or accurate. The low R-squared value of 0.001 indicates that only a tiny fraction of the variance in the dependent variable can be explained by the independent variables used in the model. Furthermore, the F-statistic of 2.568 and its associated probability suggest that the model as a whole is not statistically significant, which further calls into question its overall quality. However, it is worth noting that the coefficient for the price_num variable is statistically significant, indicating that it has a noticeable impact on the number of free bikes available. In contrast, the coefficient for the rating variable is not statistically significant.
+Based on my analysis of the data, the quality of Yelp's API coverage in London appears to be insufficient for providing accurate and reliable predictions of the number of free bikes currently available for public use. Although the model shows some potential for predicting the number of free bikes available, the results are not particularly reliable or accurate. The low R-squared value of 0.001 indicates that only a tiny fraction of the variance in the dependent variable can be explained by the independent variables used in the model. Furthermore, the F-statistic of 2.568 and its associated probability suggest that the model as a whole is not statistically significant, which further calls into question its overall quality. However, it is worth noting that the coefficient for the price_num variable is statistically significant, indicating that it has a noticeable impact on the number of free bikes available. In contrast, the coefficient for the rating variable is not statistically significant.
 
-The model also underwent three additional tests: the Durbin-Watson test, the Jarque-Bera test, and AIC-BIC values. The Durbin-Watson test checked for the presence of autocorrelation in the residuals of a regression analysis, while the Jarque-Bera test determined whether the residuals of a regression analysis are normally distributed. The AIC and BIC values are measures of the quality of the model fit. Together, these three tests suggest that the model fit is not of high quality and should be approached with caution. 
+The model also underwent three additional tests: the Durbin-Watson test, the Jarque-Bera test, and AIC-BIC values. The Durbin-Watson test checks for the presence of autocorrelation in the residuals of a regression analysis, while the Jarque-Bera test determined whether the residuals of a regression analysis are normally distributed. The AIC and BIC values are measures of the quality of the model fit, where lower values indicate a better fit. Together, these three tests suggest that the model fit is not of high quality and should be approached with caution. 
 
 The low Durbin-Watson statistic suggests that the model's residuals may have correlation, which means that errors may be correlated with each other over time. This violates one of the assumptions of linear regression and may lead to unreliable predictions. The Jarque-Bera test indicates that the residuals are not normally distributed, which means the data is not capturing all of the relevant factors that affect the dependent variable, or that there are other sources of variability that are not accounted for in the model. Lastly, the AIC and BIC values suggest that the model fit is not optimal, which is a further indication that the model should be used with care. Overall, these tests suggest that the model may not be suitable for predicting the number of free bikes available with a high degree of accuracy and that alternative sources of information or more robust models may be needed.
 
-
+I further made three regression plots to show the relationship between the independent variables (POI rating and price) and the number of available free bikes at CityBike locations in London. The first plot shows the regression analysis results for both the POI rating and price, while the second and third plots show the regression analysis results for only the POI rating and POI price, respectively. The dependent variable in all three plots is the number of available free bikes at each CityBike location. I decided to run these separately becuase
 
 ![Regression POI rating, price, and available free bikes](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/Regression%20POI%20price%20and%20rating%20near%20CB%20location.png)
 
+The first plot above indicates that both the POI rating and price have a weak positive relationship with the number of available free bikes. However, the scatterplot is quite dispersed, indicating that the relationship is not strong, and the regression line has a shallow slope, suggesting that changes in POI rating and price have a minimal effect on the number of available free bikes.
 
 ![Regression POI rating and available free bikes](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/Regression%20rating%20near%20CB%20location.png)
 
+The second plot above shows the regression analysis results for only the POI rating. The scatterplot shows a similar dispersion to the first plot, and the regression line again has a shallow slope, suggesting that changes in POI rating have a minimal effect on the number of available free bikes.
 
 ![Regression POI price and available free bikes](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/Regression%20POI%20prices%20near%20CB%20location.png)
 
-## Results
-(fill in what you found about the comparative quality of API coverage in your chosen area and the results of your model.)
+The third plot above shows the regression analysis results for only the POI price. The scatterplot in this case has a slightly tighter dispersion, and the regression line has a steeper slope compared to the previous two plots, suggesting that changes in POI price have a slightly more significant effect on the number of available free bikes compared to changes in POI rating.
+
+Overall, even when looking at these individually as opposed to together as one regression as done with the first plot and overall regression summary, the overall effect of both variables is still quite minimal.
+
 
 ## Challenges 
-(discuss challenges you faced in the project)
+I faced a few challenges when trying to retrieve data from my API. At first, I didn't realize that I was being rate-limited by FourSquare, and I thought there was a bug in my code. Although my code looked correct and didn't show any errors, it wasn't returning all of my data. Fortunately, a mentor helped me identify that there wasn't a bug by looking through my code, and helped me to implement measures to avoid being rate-limited, such as adding a sleep command between requests and limiting the scope of my data retrieval. 
+
+Further, I initially had a fairly difficult time understanding what the different APIs were and what kind of information I could retrieve from them. Even after I managed to get them working, I noticed that FourSquare was returning a significant number of NaN row values. I tried using different query parameters to extract some numerical data that could be used for regression analysis. However, after examining the API params for one location using the JSON_content query, I discovered that there was really no numerical data was available.
 
 ## Future Goals
-(what would you do if you had more time?)
-
+I think for my own personal growth surrounding the development of my data skills, I need to do some more work with a variety of different APIs as I it was what I found most difficult and took me the longest to complete. It is worth noting that despite my difficulties with the APIs, it was still a much faster way to gather data compared to manually scraping data as I have done in the past.
 
 
 
