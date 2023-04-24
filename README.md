@@ -68,9 +68,11 @@ The information provided in the summary statistics can help to identify potentia
 
 Additionally, since almost one-third of the data on price is missing, it may be necessary to exclude this variable from the analysis or impute a 0 value, as we know the park locations where no price data is included are because they are free of charge.
 
+Based on a scatter plot analysis comparing rating of nearby restaurants and parks and number of available bikes, it appears that there is no strong correlation between the number of parks and restaurants in a particular location and the number of available bikes at CityBikes. The plot does not show any clear pattern or trend that would suggest a strong relationship between these variables. However, it is possible that other factors not included in this analysis could be influencing the availability of bikes at CityBikes.
 
 ![Yelp Rating vs Available Bikes](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/yelp_citybikes_scatterplot.png)
 
+Further information may be gathered in step four as part of regression analysis. 
 
 
 ### Step 4:
