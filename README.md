@@ -36,12 +36,18 @@ To start, I imported the five CSV files created in the first two phases. These f
 
 The next step was to merge the Yelp and Foursquare datasets based on the "location" column and concatenate them together. After this, I repeated the process with the City Bikes dataset, resulting in two separate merged datasets: one for Yelp and City Bikes and one for Foursquare and City Bikes. Before proceeding, I removed the "id" and "fsq_id" columns from the merged datasets as they did not add any useful information. Finally, I exported the merged datasets to CSV files and loaded them back in as new DataFrames for further analysis.
 
+##### Step 4: EDA Analysis
+After collecting the necessary data, I began my exploratory data analysis (EDA). As a first step in my EDA,  I decided to compare the number of parks and the number of restaurants that were found in both a 250 M radius of bike stations on Foursquare and Yelp.
+
+
 ##### Exploratory Data Analysis - FourSquare
-After collecting the necessary data, I began my exploratory data analysis (EDA). I started with my FourSqaure and CityBikes API Data. However, upon examining the data retireved from the FourSquare API request, it became apparent that the information available about restaurants and parks within a 250m radius of the CityBike locations was insufficient for a thorough analysis.
+I then moved on to my FourSqaure and CityBikes API Data. On a first glance the descriptive and summary data appeared to be normal and consistent with what I might find in terms of bike numbers,  However, upon examining the data retireved from the FourSquare API request, it became apparent that the information available about restaurants and parks within a 250m radius of the CityBike locations was insufficient for a thorough analysis. 
 
-![FourSquare Describe Stats](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/FourSquare%20Describe%20Stats%20EDA.png)
 
-![FourSquare Summary Stats](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/FourSquare%20Summary%20Stats%20EDA.png)
+
+![FourSquare Describe Stats]()
+
+![FourSquare Summary Stats]()
 
 To address this issue, I had added a "type" column during my initial data review to distinguish between parks and restaurants, with the intention of then running a regression analysis on the number of available bikes versus the number of parks and restaurants. However, further examination of the categories table and how different points of interest were categorized revealed that the API was including various categories that were not a good fit for parks and restaurants. For parks this was the inclusion of beer gardens, car parks (i.e. parking lots), playgrounds, corporate business parks, and outdoor food and drink patios. For restaurants it was pulling in parks, hotels, car parks, office buildings, or anywhere that has a form of food service attached. Thus, typifying each row as a park or restaurant could lead to misleading or inaccurate regression results. 
 
