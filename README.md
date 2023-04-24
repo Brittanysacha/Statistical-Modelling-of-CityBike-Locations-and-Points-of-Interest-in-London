@@ -37,28 +37,31 @@ To start, I imported the five CSV files created in the first two phases. These f
 The next step was to merge the Yelp and Foursquare datasets based on the "location" column and concatenate them together. After this, I repeated the process with the City Bikes dataset, resulting in two separate merged datasets: one for Yelp and City Bikes and one for Foursquare and City Bikes. Before proceeding, I removed the "id" and "fsq_id" columns from the merged datasets as they did not add any useful information. Finally, I exported the merged datasets to CSV files and loaded them back in as new DataFrames for further analysis.
 
 ##### Step 4: EDA Analysis
-After collecting the necessary data, I began my exploratory data analysis (EDA). As a first step in my EDA,  I decided to compare the number of parks and the number of restaurants that were found in both a 250 M radius of bike stations on Foursquare and Yelp.
+After collecting the necessary data from each API, I began my exploratory data analysis (EDA). As a first step in my EDA,  I decided to compare the number of parks and the number of restaurants that were found in both a 250 M radius of bike stations on Foursquare and Yelp.
+
+![Yelp vs FourSquare Parks and Restaurants Bar Graph]()
 
 
 ##### Exploratory Data Analysis - FourSquare
-I then moved on to my FourSqaure and CityBikes API Data. On a first glance the descriptive and summary data appeared to be normal and consistent with what I might find in terms of bike numbers,  However, upon examining the data retireved from the FourSquare API request, it became apparent that the information available about restaurants and parks within a 250m radius of the CityBike locations was insufficient for a thorough analysis. 
-
-
+On a first glance the descriptive and summary data from the FourSquare Data Frame appeared to be normal and consistent with what I might find in terms of bike numbers. However, there were no available price or rating statistics to be able to run a regression analysis. 
 
 ![FourSquare Describe Stats](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/FourSquare%20Describe%20Stats%20EDA.png)
 
 ![FourSquare Summary Stats](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/FourSquare%20Summary%20Stats%20EDA.png)
 
-To address this issue, I had added a "type" column during my initial data review to distinguish between parks and restaurants, with the intention of then running a regression analysis on the number of available bikes versus the number of parks and restaurants. However, further examination of the categories table and how different points of interest were categorized revealed that the API was including various categories that were not a good fit for parks and restaurants. For parks this was the inclusion of beer gardens, car parks (i.e. parking lots), playgrounds, corporate business parks, and outdoor food and drink patios. For restaurants it was pulling in parks, hotels, car parks, office buildings, or anywhere that has a form of food service attached. Thus, typifying each row as a park or restaurant could lead to misleading or inaccurate regression results. 
+To address this concern, I added a "type" column during my initial data review to distinguish between the number parks and restaurants within a 250m radius of bike stations. The intention of adding the type variable was to be able to run a regression analysis on the number of available bikes versus the number of parks and restaurants in each area. 
+
+I then looked at a sample from the FourSquare DataFrame to ensure it was formatted correctly and that the data contained inside made sense. However, further examination of the categories table and how different points of interest were categorized revealed that the API was including various categories that were not a good fit for parks and restaurants. For parks this was the inclusion of beer gardens, car parks (i.e. parking lots), playgrounds, corporate business parks, and outdoor food and drink patios. For restaurants it was pulling in parks, hotels, car parks, office buildings, or anywhere that has a form of food service attached. Thus, typifying each row as a park or restaurant could lead to misleading or inaccurate regression results. 
 
 ![FourSquare DataFrame Sample](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/FourSquare_Df_Sample.png)
 
-Regression analysis is a powerful tool for examining relationships between variables, but having all necessary data is crucial for obtaining accurate and informative results. Without access to important information such as ratings, prices, IDs, and categories, attempting to perform regression analysis would be ineffective and potentially misleading. Therefore, the decision was made to exclude the FourSquare data from the study and focus on alternative sources of information.
+Although regression analysis is a powerful tool for examining relationships between variables, having all necessary data is crucial for obtaining accurate and informative results. Therefore, without access to important information such as ratings and prices, and with incorrectly catergorized types of parks, attempting to perform regression analysis would be ineffective and potentially misleading. Therefore, I made the decision to exclude the FourSquare data from the study and focus on alternative sources of information.
 
 To address this issue in the future, it might be helpful to manually review the categories assigned by FourSquare's API and cross-reference them with the expected categories. This could ensure that only relevant points of interest are included in the analysis. Additionally, exploring alternative data sources could provide more comprehensive and accurate data for analysis. 
 
-Exploratory Data Analysis - Yelp
-I first looked at a sample from the Yelp DataFrame to ensure it was formatted correctly and that the data contained inside made sense. 
+## Exploratory Data Analysis - Yelp
+
+I also first looked at a sample from the Yelp DataFrame to ensure it was formatted correctly and that the data contained inside made sense. 
 
 ![FourSquare DataFrame Sample](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/Yelp%20Parks%20Data%20Sample.png)
 
