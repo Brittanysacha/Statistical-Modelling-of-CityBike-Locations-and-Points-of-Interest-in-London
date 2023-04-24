@@ -121,7 +121,7 @@ The second plot above shows the regression analysis results for only the POI rat
 
 The third plot above shows the regression analysis results for only the POI price. The scatterplot in this case has a slightly tighter dispersion, and the regression line has a steeper slope compared to the previous two plots, suggesting that changes in POI price have a slightly more significant effect on the number of available free bikes compared to changes in POI rating.
 
-Overall, even when looking at these individually as opposed to together as one regression as done with the first plot and overall regression summary, the overall effect of both variables is still quite minimal.
+Overall, the impact of POI price and ratings seems to have a minimal effect on CityBike locations. Instead, I suspect that CityBike locations are primarily based on the frequency and number of tourists in the region. Although public transit is very expensive in London, the city is easily commutable by bike for short distances and rail for longer travel. Therefore, I would assume that it is likely for local citizens have their own bikes, making tourists the primary users of CityBike locations. 
 
 
 ## Challenges 
