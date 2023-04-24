@@ -27,7 +27,7 @@ Finally, the resulting list of queried data was converted to a pandas DataFrame 
 
 The above steps were repeated for three other queries related to points of interest located within a 1025000-metre radius of each CityBike location: a further FourSquare parks request, as well as Yelp parks and restaurants requests.
 
-### Step 3: Joining CityBikes, Yelp, and FourSquare
+### Step 3A: Joining CityBikes, Yelp, and FourSquare
 
 ##### Data Joining, Primary Cleaning, and Review
 The third phase of this project involved joining the data collected from the City Bikes, Yelp, and Foursquare API requests. As the data from the Foursquare API request was not very comprehensive, I decided not to join the Yelp and Foursquare API requests together, but to have two separate groups of data. The first group consisted of the Yelp and City Bikes information, while the second group consisted of the City Bikes and Foursquare information.
@@ -36,7 +36,7 @@ To start, I imported the five CSV files created in the first two phases. These f
 
 The next step was to merge the Yelp and Foursquare datasets based on the "location" column and concatenate them together. After this, I repeated the process with the City Bikes dataset, resulting in two separate merged datasets: one for Yelp and City Bikes and one for Foursquare and City Bikes. Before proceeding, I removed the "id" and "fsq_id" columns from the merged datasets as they did not add any useful information. Finally, I exported the merged datasets to CSV files and loaded them back in as new DataFrames for further analysis.
 
-##### Step 4: EDA Analysis
+##### Step 3B: EDA Analysis
 
 After collecting the necessary data from each API, I began my exploratory data analysis (EDA). As a first step in my EDA,  I decided to compare the number of parks and the number of restaurants that were found in both a 250 M radius of bike stations on Foursquare and Yelp.
 
@@ -125,18 +125,13 @@ Overall, even when looking at these individually as opposed to together as one r
 
 
 ## Challenges 
-I faced a few challenges when trying to retrieve data from my API. At first, I didn't realize that I was being rate-limited by FourSquare, and I thought there was a bug in my code. Although my code looked correct and didn't show any errors, it wasn't returning all of my data. Fortunately, a mentor helped me identify that there wasn't a bug by looking through my code, and helped me to implement measures to avoid being rate-limited, such as adding a sleep command between requests and limiting the scope of my data retrieval. 
+I faced a few challenges when trying to retrieve data from the different APIs. At first, I didn't realize that I was being rate-limited by FourSquare, and I thought there was a bug in my code. Although my code looked correct and didn't show any errors, it wasn't returning all of my data. Fortunately, a mentor helped me identify that there wasn't a bug by looking through my code, and helped me to implement measures to avoid being rate-limited, such as adding a sleep command between requests and limiting the scope of my data retrieval. 
 
 Further, I initially had a fairly difficult time understanding what the different APIs were and what kind of information I could retrieve from them. Even after I managed to get them working, I noticed that FourSquare was returning a significant number of NaN row values. I tried using different query parameters to extract some numerical data that could be used for regression analysis. However, after examining the API params for one location using the JSON_content query, I discovered that there was really no numerical data was available.
 
 ## Future Goals
 I think for my own personal growth surrounding the development of my data skills, I need to do some more work with a variety of different APIs as I it was what I found most difficult and took me the longest to complete. It is worth noting that despite my difficulties with the APIs, it was still a much faster way to gather data compared to manually scraping data as I have done in the past.
 
+In regards to this project, if I were to scale it up, I would consider retrieving data from different APIs. For instance, in London, England, TripAdvisor is a commonly used website for reviewing restaurants and parks, as it provides comprehensive information on ratings, pricing, location and other factors. Additionally, data from GoogleMaps could be useful since they collect reviews and ratings. I believe having access to more comprehensive data would provide a better comparison between different APIs, especially since FourSquare was not as helpful.
 
-
-
-#Presentation Guideline - Make ppt. (Or figure out how to add in images and graphs to GitHub)
-
-- Min project flow
-- 2-3 min results
-- 1 min challenges and other goals
+A further step that I would have liked to take with more time is to conduct additional regression analyses using the data from parks and restaurants separately. I suspect that since the majority of the parks POIs were free (or rated 0) while all the restaurants had an associated cost, the price variable could have been skewed, resulting in inaccurate findings. By conducting separate regression analyses, we could have obtained more accurate results and a better understanding of the relationship between the number of bikes available and the types of POIs in the area.
