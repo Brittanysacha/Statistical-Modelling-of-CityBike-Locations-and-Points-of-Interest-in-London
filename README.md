@@ -73,7 +73,7 @@ I also first looked at a sample from the Yelp DataFrame to ensure it was formatt
 
 I then wanted to see what types of data had been collected. Therefore, I ran a describe query for the Yelp DataFrame, which provided a summary of the data types and non-null count for each column in a Pandas DataFrame. 
 
-![Yelp Describe Stats EDA](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/FourSquare%20Summary%20Stats%20EDA.png)
+![Yelp Describe Stats EDA](https://github.com/Brittanysacha/Statistical-Modelling-with-Python/blob/main/images/Yelp%20Describe%20Stats%20EDA.png)
 
 The Yelp DataFrame has 9 columns, each with a specific data type. The first three columns, "name," "location," and "categories," are object data types, which typically represent strings. The fourth column, "rating," is a float64 data type, which represents floating-point numbers. The fifth column, "Type," is also an object data type. The sixth and seventh and columns, "latitude" and "longitude," are float64 data types. The eighth column "free_bikes," is an integer data type. Finally, the ninth column, "price," is an object data type and has 2300 non-null values, meaning there are 1272 null values.
 
