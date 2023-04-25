@@ -27,7 +27,7 @@ Finally, the resulting list of queried data was converted to a pandas DataFrame 
 
 The above steps were repeated for three other queries related to points of interest located within a 1025000-metre radius of each CityBike location: a further FourSquare parks request, as well as Yelp parks and restaurants requests.
 
-### Step 3A: Joining CityBikes, Yelp, and FourSquare
+### Step 3: Joining CityBikes, Yelp, and FourSquare
 
 ##### Data Joining, Primary Cleaning, and Review
 The third phase of this project involved joining the data collected from the City Bikes, Yelp, and Foursquare API requests. As the data from the Foursquare API request was not very comprehensive, I decided not to join the Yelp and Foursquare API requests together, but to have two separate groups of data. The first group consisted of the Yelp and City Bikes information, while the second group consisted of the City Bikes and Foursquare information.
